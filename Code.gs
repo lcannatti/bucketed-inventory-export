@@ -35,8 +35,8 @@ const inventoryTable ='[TABLE NAME]';
 const destinationMasterTable = 'duplicates-master'; // default, change if you want
 const tempTablePrefix = 'dupes-subset' // default, change if you want
 const gcsBucket = 'gs://[YOUR BUCKET NAME]/' // What you selected in step 1, terminated with a slash
-const csvRowCount = 400;
-const fullTableSize = 830000; // expected/calculated size of the duplicates table 
+const csvRowCount = 400000;
+const fullTableSize = 8300000; // expected/calculated size of the duplicates table 
 
 function createDuplicatesTable() {
     const job = {
