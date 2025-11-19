@@ -1,3 +1,15 @@
+function listCombinedSizeStatistics(){
+  for(let i = 0; i < Math.ceil(reorgFullTableSize/reorgCsvRowCount); i+=1){
+    const queryConfig = {
+      query:`Select SUM(size_bytes) as size from ${projectName}.${dataSet}.${filesBucketTablePrefix + String(i).padStart(3,'0')}`,
+      useLegacySql:false,
+      }
+    let jobResult = BigQuery.Jobs.query(queryConfig,projectId);
+    Logger.log(`${filesBucketTablePrefix + String(i).padStart(3,'0')} | ${jobResult.rows[0].f[0].v/1000/1000/1000/1000} TB`);
+    // break;
+  }
+}
+
 function deleteOldTables(){
   // delete the duplicates tables
   for(let i = 0; i < Math.ceil(fullTableSize/csvRowCount); i+=1){
