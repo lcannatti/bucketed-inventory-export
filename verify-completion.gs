@@ -25,6 +25,7 @@ function checkBucketTables(){
 )
 select 
   batch.*,
+  '${folderIdsList[i][0]}' as target_folder,
   inventory.parent
 from \`${projectName}.${dataSet}.${filesExtractTable}\` as inventory
   inner join batch on inventory.id = batch.id
